@@ -4,6 +4,7 @@ Create a [Link Provider](https://github.com/xtermjs/xterm.js/blob/a73fe62b7aedcd
 
 [![npm](https://img.shields.io/npm/v/xterm-link-provider?style=for-the-badge)](https://www.npmjs.com/package/xterm-link-provider)
 [![unpkg](https://img.shields.io/badge/dynamic/json?label=unpkg&query=$.version&url=https%3A%2F%2Funpkg.com%2Fxterm-link-provider%40latest%2Fpackage.json&style=for-the-badge&color=orange)](https://unpkg.com/xterm-link-provider@latest/)
+[![test](https://img.shields.io/github/actions/workflow/status/LabhanshAgrawal/xterm-link-provider/test.yml?style=for-the-badge&label=tests)](https://github.com/LabhanshAgrawal/xterm-link-provider/actions/workflows/test.yml)
 
 ## Install
 
