@@ -62,11 +62,12 @@ export const computeLink = (y: number, regex: RegExp, terminal: Terminal, matchI
       break;
     }
 
-    // Get index, match.index is for the outer match which includes negated chars
-    // therefore we cannot use match.index directly, instead we search the position
-    // of the match group in text again
-    // also correct regex and string search offsets for the next loop run
-    stringIndex = line.indexOf(text, stringIndex + 1);
+    // Derive the capture group position from match.index.
+    // match.index is the start of match[0] (full match); the capture group
+    // (match[matchIndex]) is a substring within it. Using indexOf on the
+    // full match (not the whole line) avoids false hits when the same text
+    // appears earlier in the line.
+    stringIndex = match.index + match[0].indexOf(text);
     rex.lastIndex = stringIndex + text.length;
     if (stringIndex < 0) {
       // invalid stringIndex (should not have happened)

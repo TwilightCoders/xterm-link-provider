@@ -6,7 +6,7 @@
   "module": "./lib/esm/index.js",
   "types": "./lib/cjs/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\"",
+    "test": "tsc -p tsconfig-test.json && mocha --ui tdd out-test/test/**/*.test.js",
     "compile": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
     "prepare": "yarn run compile",
     "demo": "python3 -m http.server 8080"
@@ -38,6 +38,9 @@
     "@xterm/xterm": "^6.0.0"
   },
   "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^25.5.0",
+    "mocha": "^11.7.5",
     "typescript": "^5.7.0"
   },
   "peerDependencies": {
