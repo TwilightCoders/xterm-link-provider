@@ -8,7 +8,7 @@
   "scripts": {
     "test": "tsc -p tsconfig-test.json && mocha --ui tdd out-test/test/**/*.test.js",
     "compile": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
-    "prepare": "yarn run compile",
+    "prepare": "npm run compile",
     "demo": "python3 -m http.server 8080"
   },
   "files": [
