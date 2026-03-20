@@ -142,11 +142,16 @@ const stringIndexToBufferPosition = (
     const length = line.length;
     for (let i = 0; i < length; ) {
       line.getCell(i, cell);
-      stringIndex -= cell.getChars().length;
+      const charsLen = cell.getChars().length;
+      const cellWidth = cell.getWidth();
+      // Empty cells (from cursor moves like \e[1C) have no chars but
+      // occupy space. translateToString renders them as spaces, so they
+      // consume 1 string position even though getChars() returns "".
+      stringIndex -= charsLen > 0 ? charsLen : (cellWidth > 0 ? 1 : 0);
       if (stringIndex < 0) {
-        return {x: i + (reportLastCell ? cell.getWidth() : 1), y: lineIndex + 1};
+        return {x: i + (reportLastCell ? cellWidth : 1), y: lineIndex + 1};
       }
-      i += cell.getWidth();
+      i += cellWidth;
     }
     lineIndex++;
   }
